@@ -10,10 +10,41 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
+  <script>
+    (function () {
+      function loadStaticPrebuiltBundle() {
+        if (window.__KC3D_STATIC_BUNDLE_LOADED__) return;
+        window.__KC3D_STATIC_BUNDLE_LOADED__ = true;
+        var css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = './public/build/index.css';
+        document.head.appendChild(css);
+
+        var js = document.createElement('script');
+        js.type = 'module';
+        js.src = './public/build/app.js';
+        document.body.appendChild(js);
+      }
+
+      var isViteDev = !!document.querySelector('script[src*="@vite/client"]');
+      var hasRawTsx = !!document.querySelector('script[src="/src/main.tsx"]');
+      if (!isViteDev && hasRawTsx && location.hostname.indexOf('github.io') !== -1) {
+        loadStaticPrebuiltBundle();
+      } else if (!isViteDev && hasRawTsx) {
+        setTimeout(function () {
+          var root = document.getElementById('root');
+          if (root && !root.hasChildNodes()) {
+            loadStaticPrebuiltBundle();
+          }
+        }, 1200);
+      }
+    })();
+  </script>
 </body>
 </html>

@@ -118,7 +118,7 @@ export const TeacherSetupView: React.FC<Props> = ({
     if (!activeRoomId) return;
     let base = window.location.href.split('?')[0].split('#')[0];
     if (base.startsWith('file:')) {
-      base = 'https://khaibcmt.github.io/edu/';
+      base = 'https://khaibcmt.github.io/dautruong3d/';
     }
     const gmFlag = gameType === 'FAST' ? '&gm=F' : (gameType === 'BELL' ? '&gm=B' : (gameType === 'BOSS' ? '&gm=BOSS' : ''));
     const url = `${base}?r=${activeRoomId}&t=R${gmFlag}`;

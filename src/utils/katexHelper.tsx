@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import katex from 'katex';
-import 'katex/dist/katex.min.css';
 import { stripWordStyleGarbage } from '../data/defaultSubjects';
 
 interface Props {

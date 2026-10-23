@@ -145,7 +145,7 @@ export const HostArenaView: React.FC<Props> = ({
   useEffect(() => {
     let base = window.location.href.split('?')[0].split('#')[0];
     if (base.startsWith('file:')) {
-      base = 'https://khaibcmt.github.io/edu/';
+      base = 'https://khaibcmt.github.io/dautruong3d/';
     }
     const gmFlag = matchState.gameType === 'FAST' ? '&gm=F' : (matchState.gameType === 'BELL' ? '&gm=B' : (matchState.gameType === 'BOSS' ? '&gm=BOSS' : ''));
     const rUrl = `${base}?r=${activeRoomId}&t=R${gmFlag}`;
